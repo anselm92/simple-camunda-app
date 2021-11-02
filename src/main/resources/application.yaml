@@ -1,0 +1,43 @@
+server:
+  port: 8080
+camunda.bpm:
+  admin-user:
+    id: admin
+    password: admin
+    firstName: Admin
+  filter:
+    create: All tasks
+  database:
+    type: mysql
+  generic-properties:
+    properties:
+      failed-job-retry-time-cycle: R2/PT1H
+      history-time-to-live: P90D
+
+debug: true
+
+spring:
+  messages:
+    basename: messages
+    cache-seconds: 1
+    encoding: UTF-8
+    fallback-to-system-locale: true
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testbpmn?serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+  main:
+    allow-bean-definition-overriding: true
+
+druckdaten:
+  service:
+    url: "http://lxwasfe01d.bbv.de:9083/DruckDatenServiceWeb/api/auftrag/erzeugen"
+
